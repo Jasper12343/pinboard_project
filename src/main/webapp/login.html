@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login Page</title>
+	<style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --pastel-blue: #AED9E0; /* Light blue */
+            --pastel-green: #D2EFD2; /* Lighter green */
+            --pastel-yellow: #FFF3B0; /* Light yellow */
+            --pastel-pink: #F7C9B7; /* Light pink */
+            --pastel-purple: #A993A9; /* Darker purple */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: rgba(255, 243, 176, 0.8); /* Set background color with reduced opacity */
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            border: 2px solid var(--pastel-blue); /* Add border */
+            border-radius: 8px; /* Add border radius */
+            animation: fadeInScale 0.5s ease-out; /* Fade in and scale animation */
+            background-color: white; /* Set container background color */
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--pastel-purple); /* Set text color */
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: slideInFromTop 0.5s ease-out; /* Slide in from top animation */
+        }
+        input[type="password"],
+        input[type="text"],
+        input[type="submit"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 100%; /* Adjust width to fill the container */
+            height: 40px;
+            border-radius: 4px;
+            border: 1px solid var(--pastel-blue); /* Set border color */
+        }
+        input[type="submit"] {
+            background-color: #6A994E; /* Set background color */
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #4E7C3F; /* Darker shade for hover effect */
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        /* Define keyframe animations */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9); /* Start with slightly smaller size */
+            }
+            to {
+                opacity: 1;
+                transform: scale(1); /* Scale to normal size */
+            }
+        }
+        @keyframes slideInFromTop {
+            from {
+                transform: translateY(-25px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        /* Custom style for the image button */
+        .toggle-password {
+            display: inline-block;
+            width: 30px; /* Set the width of the image */
+            height: 30px; /* Set the height of the image */
+            background-image: url('1.jpg'); /* Set the image for the checked state */
+            background-size: cover;
+            cursor: pointer;
+        }
+        .toggle-password.checked {
+            background-image: url('2.jpg'); /* Set the image for the checked state */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form action="loginChecker" method="POST">
+        <h1>Login</h1>
+        <div class="zwei">Username</div><br> <input class="one" type="text" name="username" required><br>
+        <div class="drei">Password</div><br> 
+        <input class="two" type="password" name="password" id="password" required>
+        <label class="toggle-password" onclick="togglePasswordVisibility()"></label> <!-- Use label as the image button -->
+        <br>
+        <input class="button" type="SUBMIT" value="Login">
+    </form>    
+</div>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	    var container = document.querySelector('.container');
+	    container.style.opacity = 1; // Set container opacity to 1            
+	});
+    function togglePasswordVisibility() {
+        var passwordField = document.getElementById("password");
+        var toggleButton = document.querySelector(".toggle-password");
+        
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            toggleButton.classList.add("checked");
+        } else {
+            passwordField.type = "password";
+            toggleButton.classList.remove("checked");
+        }
+    }
+</script>
+</body>
+</html>
